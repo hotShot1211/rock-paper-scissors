@@ -25,6 +25,7 @@ function playRound(playerSelection, computerSelection){
     //check invalid input===================
 
     //======================================
+    //use array to create this function======
     if(player == "ROCK" ){
         if(computerSelection == "Paper"){
             return looserMessage("Rock", computerSelection);
