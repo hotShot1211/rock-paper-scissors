@@ -37,7 +37,7 @@ function playRound(playerSelection, computerSelection){
             return "It's a tie";
         }
     }
-    else if(player == "PAPER"){
+    else if(playerSelection == "PAPER"){
         if(computerSelection == "Rock"){
             return winnerMessage("Paper", computerSelection);
         }
