@@ -1,5 +1,7 @@
 let wins = 0;
 let loses = 0;
+let finalWins = 0;
+let finalLoses = 0;
 
 let playerSelection;
 let computerSelection;
@@ -22,6 +24,11 @@ function looserMessage(user, computer) {
 }
 
 function playRound(playerSelection, computerSelection) {
+    if(wins + loses == 5){
+        wins = 0;
+        loses = 0;
+        return null;
+    }
     console.log(playerSelection);
     console.log(computerSelection);
     player = playerSelection.toUpperCase();
@@ -80,29 +87,53 @@ function playRound(playerSelection, computerSelection) {
 
 let gameStart = document.querySelector('.game');
 gameStart.addEventListener('click', () => {
+    let winner = document.querySelector(".winner");
+    winner.innerText = "";
     let scoreDiv = document.querySelector(".score");
     scoreDiv.innerText = "";
+    let userSelectDisplay = document.querySelector(".user-select > .select-show");
+    userSelectDisplay.innerText = "";
+    let compSelectDiv = document.querySelector(".comp-select > .select-show");
+    compSelectDiv.innerText = "";
     let userSelectBtn = document.querySelectorAll('.btn-container>button');
     userSelectBtn.forEach((button) => {
       
         button.addEventListener('click', () => {
             
-            let userSelectDisplay = document.querySelector(".user-select > .select-show");
             userSelectDisplay.textContent = button.innerText;
             playerSelection = button.innerText;
 
             computerSelection = computerPlay();
-            let compSelectDiv = document.querySelector(".comp-select > .select-show");
             compSelectDiv.textContent = computerSelection;
             console.log(playerSelection);
             console.log(computerSelection);
 
             let message = playRound(playerSelection, computerSelection);
-            scoreDiv.innerText = message;
-             let winner = document.querySelector(".winner");
-             winner.innerText = `${wins} - ${loses}`;
+            if(message != null){
+                scoreDiv.innerText = message;
+                 winner.innerText = `${wins} - ${loses}`;
+                 finalWins = wins;
+                 finalLoses = loses;
+            }
+            else{
+                scoreDiv.innerText = "Match ends";
+                if(wins >= loses){
+                    winner.innerText = (`You win ${finalWins} to ${finalLoses}!`);
+                }
+                else{
+                    winner.innerText = (`You loose ${finalWins} to ${finalLoses}!`)
+                }
+                finalLoses = 0;
+                finalWins = 0;
+                
+            }
+            
              
         });
     });
 
-})
+});
+
+// if(wins + loses == 5){
+//     gameStart.click()
+// }
