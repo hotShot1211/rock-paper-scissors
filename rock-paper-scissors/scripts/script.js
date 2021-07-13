@@ -1,5 +1,5 @@
-let wins = 0;
-let loses = 0;
+let wins;
+let loses;
 
 function computerPlay(){
     let optionArr = ["Rock", "Paper", "Scissors"];
@@ -14,7 +14,7 @@ function winnerMessage(user, computer){
 
 function looserMessage(user, computer){
     loses++;
-    return `"You Lose! ${computer} beats ${user}"`
+    return `"You Loose! ${computer} beats ${user}"`
 
 }
 
@@ -63,22 +63,45 @@ function playRound(playerSelection, computerSelection){
     
 }
 
+let startGame = document.querySelector('.game');
+let winner = document.querySelector('.winner');
+let score = document.querySelector('.score');
 
+startGame.addEventListener('click', () => {
+    console.log("hello");
+    score.innerText = "";
+    wins = 0;
+    loses = 0;
+    winner.innerText = ""; 
+});
 
-function game(){
+let buttons = document.querySelectorAll(".btn-container > button");
 
-    for(let i = 0; i < 5; i++){
-        let playerSelection = prompt("What do you choose?");
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        console.log(button.id);
+        let playerSelection = button.id;
         let computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
 
-    }
-    if(wins > loses){
-        console.log(`You win ${wins} to ${loses}!`);
-    }
-    else{
-        console.log(`You loose ${wins} to ${loses}!`)
-    }
-}
+        let win = playRound(playerSelection, computerSelection);
+        console.log(wins);
+        if(wins + loses < 5){
+            winner.innerText = win;
+            score.innerText = `${wins} - ${loses}`
 
-game();
+        }
+        else if(wins + loses == 5){
+            score.innerText = `${wins} - ${loses}`;
+            if(wins > loses){
+                winner.innerText = "YOU WIN!";
+            }
+            else{
+                winner.innerText = "YOU LOOSE!";
+            }
+        }
+        else{
+            score.innerText = "Please reset by clicking";
+            winner.innerText = "on Play Game button"
+        }
+    });
+});
