@@ -1,0 +1,1 @@
+This project is a part of The Odin project curriculum(DOM manipulation)

@@ -1,0 +1,104 @@
+body {
+  overflow: hidden;
+}
+
+body > div {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  background-color: rgb(155, 248, 248);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.select,
+.match-detail {
+  display: flex;
+  height: 50%;
+  width: 90%;
+  background-color: rgb(169, 169, 182);
+  justify-content: center;
+  align-items: center;
+}
+
+.user-select,
+.comp-select {
+  border: 1px solid black;
+  height: 95%;
+  width: 49%;
+  display: flex;
+  flex-direction: column;
+}
+.user-select {
+  background-color: chartreuse;
+}
+.comp-select {
+  background-color: beige;
+}
+.select-show {
+  height: 80%;
+  width: 100%;
+  background-color: cadetblue;
+  color: azure;
+  font-size: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-container {
+  height: 20%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button {
+  margin-right: 10px;
+  margin-left: 10px;
+  background-color: aqua;
+  height: 30px;
+  width: 60px;
+  text-align: center;
+}
+
+.comp {
+  max-height: 20%;
+  width: 100%;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  padding-top: 25px;
+}
+
+.match-detail {
+  flex-direction: column;
+}
+.score-div,
+.winner-div {
+  background-color: burlywood;
+  height: 40%;
+  width: 90%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.score,
+.winner {
+  min-height: 80%;
+  background-color: aliceblue;
+  width: 60%;
+  font-size: 60px;
+  text-align: center;
+}
+
+button.game {
+  height: 4rem;
+  width: 7rem;
+  background-color: aquamarine;
+  font-size: 1rem;
+  font-weight: bolder;
+}
