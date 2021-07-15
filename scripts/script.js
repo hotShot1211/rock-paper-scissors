@@ -1,5 +1,7 @@
 let wins;
 let loses;
+let userSelectDiv = document.querySelector('.user-select > .select-show')
+let compSelectDiv = document.querySelector('.comp-select > .select-show');
 
 function computerPlay(){
     let optionArr = ["Rock", "Paper", "Scissors"];
@@ -72,7 +74,9 @@ startGame.addEventListener('click', () => {
     score.innerText = "";
     wins = 0;
     loses = 0;
-    winner.innerText = ""; 
+    winner.innerText = "";
+    userSelectDiv.innerText = "";
+    compSelectDiv.innerText = ""; 
 });
 
 let buttons = document.querySelectorAll(".btn-container > button");
@@ -86,6 +90,8 @@ buttons.forEach((button) => {
         let win = playRound(playerSelection, computerSelection);
         console.log(wins);
         if(wins + loses < 5){
+            userSelectDiv.innerText = playerSelection.toUpperCase();
+            compSelectDiv.innerText = computerSelection.toUpperCase();
             winner.innerText = win;
             score.innerText = `${wins} - ${loses}`
 
